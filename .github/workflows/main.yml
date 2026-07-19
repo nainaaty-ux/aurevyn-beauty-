@@ -17,8 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: project
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,11 +24,9 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        working-directory: ./project
         run: npm install
 
       - name: Build
-        working-directory: ./project
         run: npm run build
 
       - name: Setup Pages
@@ -39,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./project/dist
+          path: ./dist
 
       - name: Deploy
         id: deployment
